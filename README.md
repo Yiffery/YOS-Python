@@ -1,2 +1,2 @@
 # YOS-Python
-YOS
+YOS Is an OS in Python!
