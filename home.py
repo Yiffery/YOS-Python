@@ -23,7 +23,7 @@ def home_page():
   dimensions = re.findall(r'\b\d+\b', str(shutil.get_terminal_size()))
   width = dimensions[0]
   # Print Title and Subtitle
-  print(f'{"YOS Python 0.1":^{width}}')
+  print(f'{"YOS Python 0.2 beta":^{width}}')
   print("")
   
   # Apps
