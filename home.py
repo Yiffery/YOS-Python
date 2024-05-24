@@ -30,7 +30,7 @@ def home_page():
   print(f'{"Installed Apps":^{width}}')
   print(f'{"-"*int(width):^{width}}')
   
-  print(f'               1. Calculator{" "*(int(width)-54)}2. Notepad               ')
+  print(f'            1. Calculator{" "*(int(width)-48)}2. Notepad            ')
   
   
   # Input
@@ -40,22 +40,18 @@ def home_page():
     print()
   elif select == "2":
     clear()
-    note=""
+    newnote = note
     print("Notepad (Not saving) (Type /exit to exit)")
     print("="*int(width))
-    if note != "":
-      print(note)
-    else:
-      
-      while True:
-        currentline = input()
-        if currentline == "/exit":
-          home_page()
-        else:
-          if note != "":
-            note = note + '''
+    while True:
+      currentline = input()
+      if currentline == "/exit":
+        home_page()
+      else:
+        if newnote != "":
+          newnote = newnote + '''
 ''' + currentline
-            print(note)
-          else:
-            note = currentline
+          print(newnote)
+        else:
+          newnote = currentline
 home_page()
