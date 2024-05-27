@@ -1,9 +1,4 @@
-# Boot Manager for YOS Python
-
-# OS SYSTEM IMPORT
-
-yosversion = "0.2"
-
+yosversion = "0.3beta-0"
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -18,7 +13,6 @@ print("Importing: os/System")
 print("[=======                                 ] 17%")
 from os import system
 system('clear')
-
 # YOS CLEAR IMPORT
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
@@ -33,9 +27,7 @@ print("Importing: YOS/Clear")
 print("[==============                          ] 35%")
 def clear():
   system('clear')
-
 clear()
-
 # REPLIT DB IMPORT
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
@@ -49,9 +41,7 @@ print("     |          -----           -----     ")
 print("Importing: Replit/db")
 print("[====================                    ] 50%")
 from replit import db
-
 clear()
-
 # PYDICTIONARY IMPORT
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
