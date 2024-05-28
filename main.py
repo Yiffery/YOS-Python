@@ -1,4 +1,4 @@
-yosversion = "0.3beta-0"
+yosversion = "0.3beta-1"
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -18,7 +18,7 @@ print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
 print("    \ /     |           |      \          ")
-print("     |      |     -     |       -----     ")
+print("     |      |     \     |       -----     ")
 print("     |      |           |            \    ")
 print("     |       \         /              |   ")
 print("     |        \       /              /    ")
@@ -33,7 +33,7 @@ print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
 print("    \ /     |           |      \          ")
-print("     |      |     -     |       -----     ")
+print("     |      |     |     |       -----     ")
 print("     |      |           |            \    ")
 print("     |       \         /              |   ")
 print("     |        \       /              /    ")
@@ -47,7 +47,7 @@ print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
 print("    \ /     |           |      \          ")
-print("     |      |     -     |       -----     ")
+print("     |      |     /     |       -----     ")
 print("     |      |           |            \    ")
 print("     |       \         /              |   ")
 print("     |        \       /              /    ")
@@ -74,12 +74,12 @@ print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
 print("    \ /     |           |      \          ")
-print("     |      |     -     |       -----     ")
+print("     |      |     \     |       -----     ")
 print("     |      |           |            \    ")
 print("     |       \         /              |   ")
 print("     |        \       /              /    ")
 print("     |          -----           -----     ")
-print("Importing: re")
+print("Importing: re and platform")
 print("[========================================] 100%")
 import re
 import platform
@@ -129,7 +129,7 @@ def home_page():
     def notepad():
       
       clear()
-      print("Notepad (Type /exit to exit)")
+      print("Notepad (Type /exit to exit) (Type /clear to clear")
       print("="*int(width))
       # Check if note is blank
   
@@ -140,6 +140,9 @@ def home_page():
           # Check if note is blank
           if currentline == "/exit":
             home_page()
+          elif currentline == "/clear":
+            db["note"] = ""
+            notepad()
           else:
             if db.get("note", "empty") != "empty":
               # If note isn't blank, create new line and write
