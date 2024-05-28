@@ -1,2 +1,7 @@
-# YOS Python Very cool!
-YOS Is an OS in Python! Make sure to check releases to get updates. The goal of YOS Python is to have only one python file to rule them all.
+# YOS Python
+YOS Python is a Python-based operating system.
+
+# Made possible by
+- YHStudios
+- Repl.it
+- Github
