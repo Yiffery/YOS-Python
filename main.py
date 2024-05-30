@@ -159,7 +159,7 @@ def home_page():
       print("Installed Apps:")
       print("1. Information")
       print("2. Notepad")
-      exit = input("Press enter to continue")
+      input("Press enter to continue")
       home_page()
     information()
   elif select == "2":
@@ -207,7 +207,7 @@ def home_page():
   elif select == "3":
     def power_options():
       clear()
-      print("Notepad (Type /exit to exit) (Type /clear to clear")
+      print("Notepad (Type /exit to exit)")
       print("="*int(width))
       print("1. Power off")
       print("2. Restart")
@@ -227,7 +227,18 @@ def home_page():
           print("Resetting...")
           db["note"] = ""
           clear()
+          yos_logo()
+          print("YOS has been reset")
+          time.sleep(1)
           exec(open("main.py").read())
+        if sure == "N" or "No" or "no":
+          home_page()
+      elif poweroption == "/exit":
+        home_page()
+      else:
+        print("{} was not an option".format(poweroption))
+        time.sleep(1)
+        power_options()
     power_options()
   else:
     print("Invalid App")
