@@ -1,9 +1,4 @@
-# Boot Manager for YOS Python
-
-# OS SYSTEM IMPORT
-
-yosversion = "0.2"
-
+yosversion = "0.3beta-2"
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -15,55 +10,50 @@ print("     |        \       /              /    ")
 print("     |          -----           -----     ")
 print("                                          ")
 print("Importing: os/System")
-print("[=======                                 ] 17%")
+print("[=====                                   ] 13%")
 from os import system
 system('clear')
-
 # YOS CLEAR IMPORT
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
 print("    \ /     |           |      \          ")
-print("     |      |     -     |       -----     ")
+print("     |      |     \     |       -----     ")
 print("     |      |           |            \    ")
 print("     |       \         /              |   ")
 print("     |        \       /              /    ")
 print("     |          -----           -----     ")
 print("Importing: YOS/Clear")
-print("[==============                          ] 35%")
+print("[==========                              ] 25%")
 def clear():
   system('clear')
-
 clear()
-
 # REPLIT DB IMPORT
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
 print("    \ /     |           |      \          ")
-print("     |      |     -     |       -----     ")
+print("     |      |     |     |       -----     ")
 print("     |      |           |            \    ")
 print("     |       \         /              |   ")
 print("     |        \       /              /    ")
 print("     |          -----           -----     ")
 print("Importing: Replit/db")
-print("[====================                    ] 50%")
+print("[===============                         ] 38%")
 from replit import db
-
 clear()
-
 # PYDICTIONARY IMPORT
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
 print("    \ /     |           |      \          ")
-print("     |      |     -     |       -----     ")
+print("     |      |     /     |       -----     ")
 print("     |      |           |            \    ")
 print("     |       \         /              |   ")
 print("     |        \       /              /    ")
 print("     |          -----           -----     ")
 print("Importing: PyDictionary")
-print("[===========================             ] 67%")
+print("[====================                    ] 50%")
 from PyDictionary import PyDictionary
 clear()
 # SHUTIL IMPORT
@@ -77,24 +67,60 @@ print("     |       \         /              |   ")
 print("     |        \       /              /    ")
 print("     |          -----           -----     ")
 print("Importing: Shutil")
-print("[=================================       ] 83%")
+print("[=================================       ] 63%")
 import shutil
 clear()
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
 print("    \ /     |           |      \          ")
-print("     |      |     -     |       -----     ")
+print("     |      |     \     |       -----     ")
 print("     |      |           |            \    ")
 print("     |       \         /              |   ")
 print("     |        \       /              /    ")
 print("     |          -----           -----     ")
 print("Importing: re")
-print("[========================================] 100%")
+print("[========================================] 75%")
 import re
+clear()
+print(" \       /      -----           -----     ")
+print("  \     /     /       \        /          ")
+print("   \   /     /         \      |           ")
+print("    \ /     |           |      \          ")
+print("     |      |     |     |       -----     ")
+print("     |      |           |            \    ")
+print("     |       \         /              |   ")
+print("     |        \       /              /    ")
+print("     |          -----           -----     ")
+print("Importing: platform")
+print("[========================================] 88%")
 import platform
 clear()
+print(" \       /      -----           -----     ")
+print("  \     /     /       \        /          ")
+print("   \   /     /         \      |           ")
+print("    \ /     |           |      \          ")
+print("     |      |     /     |       -----     ")
+print("     |      |           |            \    ")
+print("     |       \         /              |   ")
+print("     |        \       /              /    ")
+print("     |          -----           -----     ")
+print("Importing: time")
+print("[========================================] 100%")
+import time
+clear()
 
+def yos_logo():
+  print(" \       /      -----           -----     ")
+  print("  \     /     /       \        /          ")
+  print("   \   /     /         \      |           ")
+  print("    \ /     |           |      \          ")
+  print("     |      |     -     |       -----     ")
+  print("     |      |           |            \    ")
+  print("     |       \         /              |   ")
+  print("     |        \       /              /    ")
+  print("     |          -----           -----     ")
+  print("                                          ")
 note = "" 
 # Get terminal size
 dimensions = re.findall(r'\b\d+\b', str(shutil.get_terminal_size()))
@@ -115,6 +141,7 @@ def home_page():
   print(f'{"-"*int(width):^{width}}')
 
   print(f'            1. Information{" "*(int(width)-48)}2. Notepad            ')
+  print(f'{"3. Power Options":^{width}}')
   # Input
   select = input("Select an app by inputting the corresponding number: ")
 
@@ -132,14 +159,14 @@ def home_page():
       print("Installed Apps:")
       print("1. Information")
       print("2. Notepad")
-      exit = input("Press enter to continue")
+      input("Press enter to continue")
       home_page()
     information()
   elif select == "2":
     def notepad():
       
       clear()
-      print("Notepad (Type /exit to exit)")
+      print("Notepad (Type /exit to exit) (Type /clear to clear")
       print("="*int(width))
       # Check if note is blank
   
@@ -150,6 +177,9 @@ def home_page():
           # Check if note is blank
           if currentline == "/exit":
             home_page()
+          elif currentline == "/clear":
+            db["note"] = ""
+            notepad()
           else:
             if db.get("note", "empty") != "empty":
               # If note isn't blank, create new line and write
@@ -174,4 +204,44 @@ def home_page():
               # If note is blank, don't create new line, but write
               db["note"] = currentline
     notepad()
+  elif select == "3":
+    def power_options():
+      clear()
+      print("Notepad (Type /exit to exit)")
+      print("="*int(width))
+      print("1. Power off")
+      print("2. Restart")
+      print("3. Reset")
+      poweroption = input("Select an option by inputting the corresponding number: ")
+      if poweroption == "1":
+        yos_logo()
+        print("Shutting Down...")
+      elif poweroption == "2":
+        yos_logo()
+        print("Restarting...")
+        exec(open("main.py").read())
+      elif poweroption == "3":
+        sure = input("Are you sure you want to reset? (Y/N): ")
+        if sure == "Y" or "Yes" or "yes":
+          yos_logo()
+          print("Resetting...")
+          db["note"] = ""
+          clear()
+          yos_logo()
+          print("YOS has been reset")
+          time.sleep(1)
+          exec(open("main.py").read())
+        if sure == "N" or "No" or "no":
+          home_page()
+      elif poweroption == "/exit":
+        home_page()
+      else:
+        print("{} was not an option".format(poweroption))
+        time.sleep(1)
+        power_options()
+    power_options()
+  else:
+    print("Invalid App")
+    time.sleep(0.5)
+    home_page()
 home_page()

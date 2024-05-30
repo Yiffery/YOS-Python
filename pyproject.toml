@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "repl-nix-yos-python"
-version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+name = "YOSPython"
+version = "0.3.0beta"
+description = "Proudly open-source on GitHub at: https://github.com/yiffery/YOS-Python/"
+authors = ["Yifei Wang <yifeiw8@icloud.com>", "YHStudios <mailyhstudios@gmail.com>"]
 readme = "README.md"
 packages = [{include = "repl_nix_yos_python"}]
 
