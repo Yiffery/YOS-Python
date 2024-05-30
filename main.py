@@ -1,4 +1,4 @@
-yosversion = "0.4beta-0"
+yosversion = "0.4beta-1"
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
