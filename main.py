@@ -140,8 +140,8 @@ def home_page():
   print(f'{"Installed Apps":^{width}}')
   print(f'{"-"*int(width):^{width}}')
 
-  print(f'            1. Information{" "*(int(width)-48)}2. Notepad            ')
-  print(f'{"3. Power Options":^{width}}')
+  print(f'{"1. Information     2. Notepad":^{width}}')
+  print(f'{"3. Power Options     4. YDocs":^{width}}')
   # Input
   select = input("Select an app by inputting the corresponding number: ")
 
