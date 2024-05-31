@@ -1,4 +1,5 @@
-yosversion = "0.4beta-1"
+# Beta controlled tests
+yosversion = "0.4beta-2"
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -52,9 +53,9 @@ print("     |      |           |            \    ")
 print("     |       \         /              |   ")
 print("     |        \       /              /    ")
 print("     |          -----           -----     ")
-print("Importing: PyDictionary")
+print("Importing: pyautogui: typewrite")
 print("[====================                    ] 50%")
-from PyDictionary import PyDictionary
+
 clear()
 # SHUTIL IMPORT
 print(" \       /      -----           -----     ")
@@ -109,6 +110,9 @@ print("Importing: time")
 print("[========================================] 100%")
 import time
 clear()
+db["name1"] = "something"
+db["name2"] = "something else"
+
 
 def yos_logo():
   print(" \       /      -----           -----     ")
@@ -164,12 +168,10 @@ def home_page():
     information()
   elif select == "2":
     def notepad():
-      
       clear()
       print("Notepad (Type /exit to exit) (Type /clear to clear")
       print("="*int(width))
       # Check if note is blank
-  
       if db.get("note", "empty") != "empty":
         print(db["note"])
         while True:
@@ -240,6 +242,44 @@ def home_page():
         time.sleep(1)
         power_options()
     power_options()
+  elif select == "4":
+    def remove_last_line_from_string(s):
+      return s[:s.rfind('\n')]
+    def YDocsTitle():
+      print("YDocs (Type /exit to exit)")
+      print("="*int(width))
+    def YDocs():
+      number_of_documents = 0
+      clear()
+      YDocsTitle()
+      # Check how many documents are stored in replit DB
+      for count in range(1, len(db.prefix("name")) + 1):
+        print("Document {0}: {1}".format(count, db.prefix("name")[count - 1]))
+        number_of_documents = number_of_documents + 1
+      
+      docselect = int(input("Which document would you like to open? (/new for new)"))
+      if docselect <= number_of_documents:
+        clear()
+        YDocsTitle()
+        print("Opening document {0}".format(docselect))
+        clear()
+        YDocsTitle()
+        # print document contents from replit db
+        while True:
+          clear()
+          text = db["text{0}".format(docselect)]
+          print(text)
+          entertext = input()
+          if entertext == "/dl":
+            db["text{0}".format(docselect)] = remove_last_line_from_string(text)
+          elif entertext == "/exit":
+            db["text{0}".format(docselect)] = remove_last_line_from_string(text)
+            home_page()
+          else:
+            db["text{0}".format(docselect)] = text + "\n" + entertext
+      elif docselect == "/new":
+        newdocname = input("What would you like to name your new document?")
+    YDocs()
   else:
     print("Invalid App")
     time.sleep(0.5)
