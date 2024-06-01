@@ -1,5 +1,5 @@
 # Beta controlled tests
-yosversion = "0.4beta-2"
+yosversion = "0.4beta-3"
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -110,8 +110,6 @@ print("Importing: time")
 print("[========================================] 100%")
 import time
 clear()
-db["name1"] = "something"
-db["name2"] = "something else"
 
 
 def yos_logo():
@@ -257,8 +255,8 @@ def home_page():
         print("Document {0}: {1}".format(count, db.prefix("name")[count - 1]))
         number_of_documents = number_of_documents + 1
       
-      docselect = int(input("Which document would you like to open? (/new for new)"))
-      if docselect <= number_of_documents:
+      docselect = input("Which document would you like to open? (0 for new)")
+      if int(docselect) <= number_of_documents and int(docselect) != 0:
         clear()
         YDocsTitle()
         print("Opening document {0}".format(docselect))
@@ -267,18 +265,46 @@ def home_page():
         # print document contents from replit db
         while True:
           clear()
+          YDocsTitle()
           text = db["text{0}".format(docselect)]
           print(text)
           entertext = input()
           if entertext == "/dl":
             db["text{0}".format(docselect)] = remove_last_line_from_string(text)
+          elif entertext == "/rename":
+            clear()
+            YDocsTitle()
+            db["name{0}".format(docselect)] = input("Enter new name: ")
           elif entertext == "/exit":
             db["text{0}".format(docselect)] = remove_last_line_from_string(text)
             home_page()
           else:
             db["text{0}".format(docselect)] = text + "\n" + entertext
-      elif docselect == "/new":
+      elif int(docselect) == 0:
         newdocname = input("What would you like to name your new document?")
+        db["name{0}".format(number_of_documents+1)] = newdocname
+        number_of_documents += 1
+        docselect = number_of_documents
+        while True:
+          print(docselect)
+          YDocsTitle()
+          
+          if db["text{0}".format(docselect)]:
+            text = db["text{0}".format(docselect)]
+            print(text)
+          entertext = input()
+          if entertext == "/dl":
+            db["text{0}".format(docselect)] = remove_last_line_from_string(text)
+          elif entertext == "/rename":
+            clear()
+            YDocsTitle()
+            db["name{0}".format(docselect)] = input("Enter new name: ")
+          elif entertext == "/exit":
+            db["text{0}".format(docselect)] = remove_last_line_from_string(text)
+            home_page()
+          else:
+            db["text{0}".format(docselect)] = text + "\n" + entertext
+        
     YDocs()
   else:
     print("Invalid App")
