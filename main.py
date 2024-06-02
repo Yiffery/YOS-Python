@@ -1,4 +1,5 @@
-yosversion = "0.3beta-2"
+# Beta controlled tests
+yosversion = "0.4-f2"
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -52,9 +53,9 @@ print("     |      |           |            \    ")
 print("     |       \         /              |   ")
 print("     |        \       /              /    ")
 print("     |          -----           -----     ")
-print("Importing: PyDictionary")
+print("Importing: pyautogui: typewrite")
 print("[====================                    ] 50%")
-from PyDictionary import PyDictionary
+
 clear()
 # SHUTIL IMPORT
 print(" \       /      -----           -----     ")
@@ -110,6 +111,7 @@ print("[========================================] 100%")
 import time
 clear()
 
+
 def yos_logo():
   print(" \       /      -----           -----     ")
   print("  \     /     /       \        /          ")
@@ -140,8 +142,8 @@ def home_page():
   print(f'{"Installed Apps":^{width}}')
   print(f'{"-"*int(width):^{width}}')
 
-  print(f'            1. Information{" "*(int(width)-48)}2. Notepad            ')
-  print(f'{"3. Power Options":^{width}}')
+  print(f'{"1. Information     2. Notepad":^{width}}')
+  print(f'{"3. Power Options     4. YDocs":^{width}}')
   # Input
   select = input("Select an app by inputting the corresponding number: ")
 
@@ -164,12 +166,10 @@ def home_page():
     information()
   elif select == "2":
     def notepad():
-      
       clear()
       print("Notepad (Type /exit to exit) (Type /clear to clear")
       print("="*int(width))
       # Check if note is blank
-  
       if db.get("note", "empty") != "empty":
         print(db["note"])
         while True:
@@ -240,6 +240,72 @@ def home_page():
         time.sleep(1)
         power_options()
     power_options()
+  elif select == "4":
+    def remove_last_line_from_string(s):
+      return s[:s.rfind('\n')]
+    def YDocsTitle():
+      print("YDocs (Type /exit to exit)")
+      print("="*int(width))
+    def YDocs():
+      number_of_documents = 0
+      clear()
+      YDocsTitle()
+      # Check how many documents are stored in replit DB
+      for count in range(1, len(db.prefix("name")) + 1):
+        print("Document {}".format(count))
+        number_of_documents = number_of_documents + 1
+      
+      docselect = input("Which document would you like to open? (0 for new)")
+      
+      if int(docselect) <= number_of_documents and int(docselect) != 0:
+        clear()
+        YDocsTitle()
+        print("Opening document {0}".format(docselect))
+        clear()
+        YDocsTitle()
+        # print document contents from replit db
+        while True:
+          clear()
+          YDocsTitle()
+          text = db["text{0}".format(docselect)]
+          print(text)
+          entertext = input()
+          if entertext == "/dl":
+            db["text{0}".format(docselect)] = remove_last_line_from_string(text)
+          elif entertext == "/rename":
+            clear()
+            YDocsTitle()
+            db["name{0}".format(docselect)] = input("Enter new name: ")
+          elif entertext == "/exit":
+            db["text{0}".format(docselect)] = remove_last_line_from_string(text)
+            home_page()
+          else:
+            db["text{0}".format(docselect)] = text + "\n" + entertext
+      elif int(docselect) == 0:
+        number_of_documents += 1
+        docselect = number_of_documents
+        db["text{0}".format(docselect)] = ""
+        while True:
+          clear()
+          YDocsTitle()
+          text = db["text{0}".format(docselect)]
+          print(text)
+          entertext = input()
+          if entertext == "/dl":
+            db["text{0}".format(docselect)] = remove_last_line_from_string(text)
+          elif entertext == "/rename":
+            clear()
+            YDocsTitle()
+            db["name{0}".format(docselect)] = input("Enter new name: ")
+          elif entertext == "/exit":
+            db["text{0}".format(docselect)] = remove_last_line_from_string(text)
+            home_page()
+          else:
+            if db["text{0}".format(docselect)] == "":
+              db["text{0}".format(docselect)] = text + entertext
+            else:
+              db["text{0}".format(docselect)] = text + "\n" + entertext
+    YDocs()
   else:
     print("Invalid App")
     time.sleep(0.5)
