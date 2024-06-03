@@ -1,5 +1,5 @@
 # Beta controlled tests
-yosversion = "0.4-f2"
+yosversion = "0.5beta-0"
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
