@@ -1,5 +1,4 @@
-# Beta controlled tests
-yosversion = "0.5beta-2"
+yosversion = "0.5beta-f1"
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -15,7 +14,6 @@ print("[=====                                   ] 13%")
 from os import system
 import sys
 system('clear')
-# YOS CLEAR IMPORT
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -30,7 +28,6 @@ print("[==========                              ] 25%")
 def clear():
   system('clear')
 clear()
-# REPLIT DB IMPORT
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -44,7 +41,6 @@ print("Importing: Replit/db")
 print("[===============                         ] 38%")
 from replit import db
 clear()
-# PYDICTIONARY IMPORT
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -58,7 +54,6 @@ print("Importing: colorama")
 print("[====================                    ] 50%")
 from colorama import Fore, Back, Style
 clear()
-# SHUTIL IMPORT
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -111,8 +106,6 @@ print("Importing: time")
 print("[========================================] 100%")
 import time
 clear()
-
-
 def yos_logo():
   print(" \       /      -----           -----     ")
   print("  \     /     /       \        /          ")
@@ -129,26 +122,21 @@ note = ""
 dimensions = re.findall(r'\b\d+\b', str(shutil.get_terminal_size()))
 width = dimensions[0]
 def home_page():
-  # CLEAR IT ALL!
   clear()
   # Get terminal size
   dimensions = re.findall(r'\b\d+\b', str(shutil.get_terminal_size()))
   width = dimensions[0]
   height = dimensions[1]
   # Print Title and Subtitle
-
   print(f'{"YOS Python {0}":^{width}}'.format(yosversion))
   print("")
-
   # Apps
   print(f'{"Installed Apps":^{width}}')
   print(f'{"-"*int(width):^{width}}')
-
   print(f'{"1. Settings     2. Notepad":^{width}}')
   print(f'{"3. Power Options     4. YDocs":^{width}}')
   # Input
   select = input("Select an app by inputting the corresponding number: ")
-
   if select == "1":
     def settings_titlebar(page):
       print("Settings (Type /exit to exit, 0 for back) ({})".format(page))
@@ -187,9 +175,11 @@ def home_page():
           print("re")
           print("platform")
           print("time")
-          exit = input("Hit enter to go back")
+          input("Hit enter to go back")
           settings()
         about()
+      if settings_open == "/exit":
+        home_page()
       else:
         clear()
         settings_titlebar("Error")
@@ -197,7 +187,6 @@ def home_page():
         time.sleep(1)
         settings()
     settings()
-      
   elif select == "2":
     def notepad():
       clear()
@@ -288,9 +277,7 @@ def home_page():
       for count in range(1, len(db.prefix("name")) + 1):
         print("Document {}".format(count))
         number_of_documents = number_of_documents + 1
-      
       docselect = input("Which document would you like to open? (0 for new)")
-      
       if int(docselect) <= number_of_documents and int(docselect) != 0:
         clear()
         YDocsTitle()
