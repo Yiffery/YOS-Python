@@ -11,6 +11,7 @@ python = "^3.10"
 replit = "^4.0.0"
 pyautogui = "^0.9.54"
 streamlit = "^1.35.0"
+colorama = "^0.4.6"
 
 
 [build-system]
