@@ -1,5 +1,5 @@
 # Beta controlled tests
-yosversion = "0.5beta-1"
+yosversion = "0.5beta-2"
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -13,6 +13,7 @@ print("                                          ")
 print("Importing: os/System")
 print("[=====                                   ] 13%")
 from os import system
+import sys
 system('clear')
 # YOS CLEAR IMPORT
 print(" \       /      -----           -----     ")
@@ -133,6 +134,7 @@ def home_page():
   # Get terminal size
   dimensions = re.findall(r'\b\d+\b', str(shutil.get_terminal_size()))
   width = dimensions[0]
+  height = dimensions[1]
   # Print Title and Subtitle
 
   print(f'{"YOS Python {0}":^{width}}'.format(yosversion))
@@ -152,9 +154,9 @@ def home_page():
       print("Settings (Type /exit to exit, 0 for back) ({})".format(page))
       print("="*int(width))
     def settings():
+      clear()
       settings_titlebar("Home")
       print("1. About")
-      print("2. Reset")
       settings_open = input("Enter the number of the setting you want to open: ")
       if settings_open == "1":
         def about():
@@ -169,7 +171,33 @@ def home_page():
           print("Console")
           print("-"*int(width))
           print("Console width: " + str(width))
-          print("")
+          print("Console height: " + str(height))
+          print()
+          print("Python")
+          print("-"*int(width))
+          print("Python Version: " + sys.version)
+          print()
+          print("Dependencies")
+          print("-"*int(width))
+          print("os/system")
+          print("sys")
+          print("Replit/db")
+          print("colorama")
+          print("Shutil")
+          print("re")
+          print("platform")
+          print("time")
+          exit = input("Hit enter to go back")
+          settings()
+        about()
+      else:
+        clear()
+        settings_titlebar("Error")
+        print("Not an option!")
+        time.sleep(1)
+        settings()
+    settings()
+      
   elif select == "2":
     def notepad():
       clear()
