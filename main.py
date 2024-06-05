@@ -1,4 +1,4 @@
-yosversion = "0.5beta-f1"
+yosversion = "0.6beta-0"
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -178,6 +178,13 @@ def home_page():
           input("Hit enter to go back")
           settings()
         about()
+      if settings_open == "2":
+        def reset():
+          clear()
+          settings_titlebar("Reset")
+          resetchoice = input("Are you sure you want to reset your settings? (Y/N)")
+          if resetchoice
+          
       if settings_open == "/exit":
         home_page()
       else:
