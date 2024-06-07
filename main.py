@@ -1,4 +1,4 @@
-yosversion = "0.6beta-0"
+yosversion = "0.6beta-1"
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -23,11 +23,10 @@ print("     |      |           |            \    ")
 print("     |       \         /              |   ")
 print("     |        \       /              /    ")
 print("     |          -----           -----     ")
-print("Importing: YOS/Clear")
+print("Importing: Re")
 print("[==========                              ] 25%")
-def clear():
-  system('clear')
-clear()
+import re
+system('clear')
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -40,7 +39,7 @@ print("     |          -----           -----     ")
 print("Importing: Replit/db")
 print("[===============                         ] 38%")
 from replit import db
-clear()
+system('clear')
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -53,7 +52,7 @@ print("     |          -----           -----     ")
 print("Importing: colorama")
 print("[====================                    ] 50%")
 from colorama import Fore, Back, Style
-clear()
+system('clear')
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -66,7 +65,7 @@ print("     |          -----           -----     ")
 print("Importing: Shutil")
 print("[==========================              ] 63%")
 import shutil
-clear()
+system('clear')
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
 print("   \   /     /         \      |           ")
@@ -76,9 +75,16 @@ print("     |      |           |            \    ")
 print("     |       \         /              |   ")
 print("     |        \       /              /    ")
 print("     |          -----           -----     ")
-print("Importing: re")
+print("Importing: YOSAPIs")
 print("[==============================          ] 75%")
-import re
+dimensions = re.findall(r'\b\d+\b', str(shutil.get_terminal_size()))
+width = int(dimensions[0])
+height = int(dimensions[1])
+def clear():
+  system('clear')
+def titlebar(app, page):
+  print("{0} ({1})".format(app, page))
+  print("="*int(width))
 clear()
 print(" \       /      -----           -----     ")
 print("  \     /     /       \        /          ")
@@ -126,7 +132,6 @@ def home_page():
   # Get terminal size
   dimensions = re.findall(r'\b\d+\b', str(shutil.get_terminal_size()))
   width = dimensions[0]
-  height = dimensions[1]
   # Print Title and Subtitle
   print(f'{"YOS Python {0}":^{width}}'.format(yosversion))
   print("")
@@ -138,23 +143,20 @@ def home_page():
   # Input
   select = input("Select an app by inputting the corresponding number: ")
   if select == "1":
-    def settings_titlebar(page):
-      print("Settings (Type /exit to exit, 0 for back) ({})".format(page))
-      print("="*int(width))
     def settings():
       clear()
-      settings_titlebar("Home")
+      titlebar("Settings", "Home")
       print("1. About")
       settings_open = input("Enter the number of the setting you want to open: ")
       if settings_open == "1":
         def about():
           clear()
-          settings_titlebar("About")
+          titlebar("Settings", "About")
           print("YOS Python")
           print("-"*int(width))
           print("YOS Python Version {}" .format(yosversion))
           print("YOS Python is open-source at https://github.com/yiffery/YOS-Python")
-          print("YOS Python has a website at https://github.io/yiffery/YOS-Python")
+          print("YOS Python has a website at https://yiffery.github.io/YOS-Python")
           print()
           print("Console")
           print("-"*int(width))
@@ -181,15 +183,24 @@ def home_page():
       if settings_open == "2":
         def reset():
           clear()
-          settings_titlebar("Reset")
-          resetchoice = input("Are you sure you want to reset your settings? (Y/N)")
-          if resetchoice
-          
+          titlebar("Settings", "Reset")
+          resetchoice = input("Are you sure you want to factory reset? (Y/N)")
+          if resetchoice == "Yes" or "yes" or "y" or "Y":
+            clear()
+            titlebar("Settings", "Resetting...")
+            yos_logo()
+            print("Resetting: YDocs")
+            for count in range(1, len(db.prefix("name")) + 1):
+              print("Deleting: " + "Document " + str(count))
+              del db["name" + str(count)]
+              del db["text" + str(count)]
+            home_page()
+        reset()
       if settings_open == "/exit":
         home_page()
       else:
         clear()
-        settings_titlebar("Error")
+        titlebar("Settings", "Error")
         print("Not an option!")
         time.sleep(1)
         settings()
@@ -281,7 +292,7 @@ def home_page():
       clear()
       YDocsTitle()
       # Check how many documents are stored in replit DB
-      for count in range(1, len(db.prefix("name")) + 1):
+      for count in range(1, len(db.prefix("text")) + 1):
         print("Document {}".format(count))
         number_of_documents = number_of_documents + 1
       docselect = input("Which document would you like to open? (0 for new)")
@@ -316,6 +327,7 @@ def home_page():
         while True:
           clear()
           YDocsTitle()
+          print(docselect)
           text = db["text{0}".format(docselect)]
           print(text)
           entertext = input()
@@ -334,6 +346,8 @@ def home_page():
             else:
               db["text{0}".format(docselect)] = text + "\n" + entertext
     YDocs()
+  elif select == "5":
+    print(db["text1"])
   else:
     print("Invalid App")
     time.sleep(0.5)
