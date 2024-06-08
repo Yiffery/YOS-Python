@@ -1,82 +1,44 @@
-yosversion = "0.6beta-1"
-print(" \       /      -----           -----     ")
-print("  \     /     /       \        /          ")
-print("   \   /     /         \      |           ")
-print("    \ /     |           |      \          ")
-print("     |      |     -     |       -----     ")
-print("     |      |           |            \    ")
-print("     |       \         /              |   ")
-print("     |        \       /              /    ")
-print("     |          -----           -----     ")
-print("                                          ")
-print("Importing: os/System")
-print("[=====                                   ] 13%")
+yosversion = "0.6beta-f1"
+print("Initializing...")
+def yosloading(mode, text, current, total):
+  equals = "="*round(int(current) / int(total) * 40)
+  empties = " " * (40-int(round(current/total * 40)))
+  percent = str(current/total*100)
+  print(" \       /      -----           -----     ")
+  print("  \     /     /       \        /          ")
+  print("   \   /     /         \      |           ")
+  print("    \ /     |           |      \          ")
+  print("     |      |     -     |       -----     ")
+  print("     |      |           |            \    ")
+  print("     |       \         /              |   ")
+  print("     |        \       /              /    ")
+  print("     |          -----           -----     ")
+  print("                                          ")
+  print("{0}: {1}".format(mode, text))
+  print("["+equals+empties+"] "+percent+"%")
+
+yosloading("Loading", "os/system", 1, 8)
 from os import system
+system('clear')
+yosloading("Importing", "sys", 2, 8)
 import sys
 system('clear')
-print(" \       /      -----           -----     ")
-print("  \     /     /       \        /          ")
-print("   \   /     /         \      |           ")
-print("    \ /     |           |      \          ")
-print("     |      |     \     |       -----     ")
-print("     |      |           |            \    ")
-print("     |       \         /              |   ")
-print("     |        \       /              /    ")
-print("     |          -----           -----     ")
-print("Importing: Re")
-print("[==========                              ] 25%")
+yosloading("Importing", "re", 3, 8)
 import re
 system('clear')
-print(" \       /      -----           -----     ")
-print("  \     /     /       \        /          ")
-print("   \   /     /         \      |           ")
-print("    \ /     |           |      \          ")
-print("     |      |     |     |       -----     ")
-print("     |      |           |            \    ")
-print("     |       \         /              |   ")
-print("     |        \       /              /    ")
-print("     |          -----           -----     ")
-print("Importing: Replit/db")
-print("[===============                         ] 38%")
+yosloading("Importing", "replit/db", 4, 8)
 from replit import db
 system('clear')
-print(" \       /      -----           -----     ")
-print("  \     /     /       \        /          ")
-print("   \   /     /         \      |           ")
-print("    \ /     |           |      \          ")
-print("     |      |     /     |       -----     ")
-print("     |      |           |            \    ")
-print("     |       \         /              |   ")
-print("     |        \       /              /    ")
-print("     |          -----           -----     ")
-print("Importing: colorama")
-print("[====================                    ] 50%")
-from colorama import Fore, Back, Style
-system('clear')
-print(" \       /      -----           -----     ")
-print("  \     /     /       \        /          ")
-print("   \   /     /         \      |           ")
-print("    \ /     |           |      \          ")
-print("     |      |     -     |       -----     ")
-print("     |      |           |            \    ")
-print("     |       \         /              |   ")
-print("     |        \       /              /    ")
-print("     |          -----           -----     ")
-print("Importing: Shutil")
-print("[==========================              ] 63%")
+yosloading("Importing", "shutil", 5, 8)
 import shutil
 system('clear')
-print(" \       /      -----           -----     ")
-print("  \     /     /       \        /          ")
-print("   \   /     /         \      |           ")
-print("    \ /     |           |      \          ")
-print("     |      |     \     |       -----     ")
-print("     |      |           |            \    ")
-print("     |       \         /              |   ")
-print("     |        \       /              /    ")
-print("     |          -----           -----     ")
-print("Importing: YOSAPIs")
-print("[==============================          ] 75%")
+yosloading("Importing", "random", 6, 8)
+import random
+system('clear')
+yosloading("Importing", "time", 7, 8)
+import time
+system('clear')
+yosloading("Importing", "YOSAPIs", 8, 8)
 dimensions = re.findall(r'\b\d+\b', str(shutil.get_terminal_size()))
 width = int(dimensions[0])
 height = int(dimensions[1])
@@ -85,33 +47,9 @@ def clear():
 def titlebar(app, page):
   print("{0} ({1})".format(app, page))
   print("="*int(width))
+
 clear()
-print(" \       /      -----           -----     ")
-print("  \     /     /       \        /          ")
-print("   \   /     /         \      |           ")
-print("    \ /     |           |      \          ")
-print("     |      |     |     |       -----     ")
-print("     |      |           |            \    ")
-print("     |       \         /              |   ")
-print("     |        \       /              /    ")
-print("     |          -----           -----     ")
-print("Importing: platform")
-print("[===================================     ] 88%")
-import platform
-clear()
-print(" \       /      -----           -----     ")
-print("  \     /     /       \        /          ")
-print("   \   /     /         \      |           ")
-print("    \ /     |           |      \          ")
-print("     |      |     /     |       -----     ")
-print("     |      |           |            \    ")
-print("     |       \         /              |   ")
-print("     |        \       /              /    ")
-print("     |          -----           -----     ")
-print("Importing: time")
-print("[========================================] 100%")
-import time
-clear()
+print("Loading YOS...")
 def yos_logo():
   print(" \       /      -----           -----     ")
   print("  \     /     /       \        /          ")
@@ -140,6 +78,7 @@ def home_page():
   print(f'{"-"*int(width):^{width}}')
   print(f'{"1. Settings     2. Notepad":^{width}}')
   print(f'{"3. Power Options     4. YDocs":^{width}}')
+  print(f'{"5. Calculator":^{width}}')
   # Input
   select = input("Select an app by inputting the corresponding number: ")
   if select == "1":
@@ -147,6 +86,7 @@ def home_page():
       clear()
       titlebar("Settings", "Home")
       print("1. About")
+      print("2. Reset")
       settings_open = input("Enter the number of the setting you want to open: ")
       if settings_open == "1":
         def about():
@@ -190,9 +130,8 @@ def home_page():
             titlebar("Settings", "Resetting...")
             yos_logo()
             print("Resetting: YDocs")
-            for count in range(1, len(db.prefix("name")) + 1):
+            for count in range(1, len(db.prefix("text")) + 1):
               print("Deleting: " + "Document " + str(count))
-              del db["name" + str(count)]
               del db["text" + str(count)]
             home_page()
         reset()
@@ -252,7 +191,6 @@ def home_page():
       print("="*int(width))
       print("1. Power off")
       print("2. Restart")
-      print("3. Reset")
       poweroption = input("Select an option by inputting the corresponding number: ")
       if poweroption == "1":
         yos_logo()
@@ -261,19 +199,6 @@ def home_page():
         yos_logo()
         print("Restarting...")
         exec(open("main.py").read())
-      elif poweroption == "3":
-        sure = input("Are you sure you want to reset? (Y/N): ")
-        if sure == "Y" or "Yes" or "yes":
-          yos_logo()
-          print("Resetting...")
-          db["note"] = ""
-          clear()
-          yos_logo()
-          print("YOS has been reset")
-          time.sleep(1)
-          exec(open("main.py").read())
-        if sure == "N" or "No" or "no":
-          home_page()
       elif poweroption == "/exit":
         home_page()
       else:
@@ -327,7 +252,6 @@ def home_page():
         while True:
           clear()
           YDocsTitle()
-          print(docselect)
           text = db["text{0}".format(docselect)]
           print(text)
           entertext = input()
@@ -347,7 +271,64 @@ def home_page():
               db["text{0}".format(docselect)] = text + "\n" + entertext
     YDocs()
   elif select == "5":
-    print(db["text1"])
+    def calculator():
+      clear()
+      titlebar("Calculator", "Home")
+      print('''1. Addition
+2. Subtraction
+3. Multiplication
+4. Division
+5. Random Number Generator''')
+      calcinput = input("Choose an option by inputting the corresponding number: ")
+      if calcinput == "1":
+        clear()
+        titlebar("Calculator", "Addition")
+        firstnumber = int(input("Enter the first number: "))
+        secondnumber = int(input("Enter the second number: "))
+        print("Answer: " + str(firstnumber+secondnumber))
+        input("Press enter to continue")
+        calculator()
+      elif calcinput == "2":
+        clear()
+        titlebar("Calculator", "Subtraction")
+        firstnumber = int(input("Enter the first number: "))
+        secondnumber = int(input("Enter the second number: "))
+        print("Answer: " + str(firstnumber-secondnumber))
+        input("Press enter to continue")
+        calculator()
+      elif calcinput == "3":
+        clear()
+        titlebar("Calculator", "Multiplication")
+        firstnumber = int(input("Enter the first number: "))
+        secondnumber = int(input("Enter the second number: "))
+        print("Answer: " + str(firstnumber*secondnumber))
+        input("Press enter to continue")
+        calculator()
+      elif calcinput == "4":
+        clear()
+        titlebar("Calculator", "Division")
+        firstnumber = int(input("Enter the first number: "))
+        secondnumber = int(input("Enter the second number: "))
+        print("Answer: " + str(firstnumber/secondnumber))
+        input("Press enter to continue")
+        calculator()
+      elif calcinput == "5":
+        clear()
+        titlebar("Calculator", "Random Number Generator")
+        firstnumber = int(input("Enter the lower range: "))
+        secondnumber = int(input("Enter the upper range: "))
+        print("Answer: "+str(random.randint(firstnumber, secondnumber)))
+        input("Press enter to cotinue")
+        calculator()
+      elif calcinput == "/exit":
+        home_page()
+      else:
+        clear()
+        titlebar("Calculator", "Error")
+        print("Not an option!")
+        time.sleep(1)
+        calculator()
+    calculator()
   else:
     print("Invalid App")
     time.sleep(0.5)
